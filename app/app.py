@@ -8,6 +8,11 @@ from helpers.parser import Order
 app = Flask(__name__)
 
 
+@app.route('/request', methods=['GET'])
+def index():
+    return "Redacto PDFum!"
+
+
 @app.route('/request', methods=['POST'])
 def deidentify():
     if request.content_type.startswith('application/pdf'):
@@ -31,4 +36,4 @@ def deidentify():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost')
+    app.run(host='0.0.0.0')

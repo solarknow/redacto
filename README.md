@@ -2,8 +2,21 @@ redacto
 ============
 This project defines a webservice that takes PDFs and extracts de-identified data
 
-.
-# To run locally
+# To run locally (with Docker)
+
+Assuming you have Docker running, first let's build the image.
+```bash
+cd app && docker build -t redacto .
+```
+
+Once all the image is built, run the image:
+```bash
+docker run --rm -p 5000:5000 redacto
+```
+
+This will make the service available at http://localhost:5000/request
+
+# To run locally (without Docker)
 
 In the base directory, create and activate a virtual environment, per
 https://virtualenv.pypa.io/en/stable/user_guide.html
@@ -18,6 +31,8 @@ Finally to start up the service, run
 We should see logs, ending with  
 ``` * Running on http://localhost:5000/```
 
+
+# Using the service 
 We can now run `curl` commands to get de-identified data:
 
 ```
@@ -59,10 +74,13 @@ would return
     "shipping_speed": "Standard Shipping"
 }
 ```
+Simply replace `test/example1.pdf` with the path to the PDF you want to have de-identified.
+
 
 #Future actions
-
-* Debug and fix pdfminer.six import in docker.
+* Add error handling and cleaner error messages
+* logging for debugging
+* Debug and fix GitHub actions yml.
 * Have the service write to CSV, or other formats.
 * This only works for similar format PDFs. To generalize this, we would need to think slightly different about the algorithm presented here.
 * If this service were to be deployed to AWS, we'd recommend this be re-written into a Lambda function. That would allow some architectural flexibility, 
