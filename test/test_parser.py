@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from pdfminer import high_level
@@ -45,8 +46,8 @@ class TestParser(unittest.TestCase):
                                            self.test_item_sold_by, self.test_item_condition)
         self.test_order_items_1 = [self.test_order_item_1]
         self.test_order_items_2 = [self.test_order_item_2, self.test_order_item_2]
-        self.test_pdf_1 = 'example1.pdf'
-        self.test_pdf_2 = 'example2.pdf'
+        self.test_pdf_1 = f'test{os.sep}example1.pdf'
+        self.test_pdf_2 = f'test{os.sep}example2.pdf'
 
     def test_pdf_1_order_is_expected(self):
         lines = high_level.extract_text(self.test_pdf_1).splitlines(keepends=False)
