@@ -80,7 +80,7 @@ Simply replace `test/example1.pdf` with the path to the PDF you want to have de-
 #Future actions
 * Add error handling and cleaner error messages
 * logging for debugging
-* Debug and fix GitHub actions yml.
+* Add tests for the service to cover the error handling
 * Have the service write to CSV, or other formats.
 * This only works for similar format PDFs. To generalize this, we would need to think slightly different about the algorithm presented here.
 * If this service were to be deployed to AWS, we'd recommend this be re-written into a Lambda function. That would allow some architectural flexibility, 
